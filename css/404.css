@@ -1,9 +1,9 @@
-/* Reset de caja para mayor consistencia */
+/* Reset básico */
 * {
   box-sizing: border-box;
 }
 
-/* Estilos básicos del cuerpo */
+/* Fondo de la página */
 body {
   margin: 0;
   padding: 0;
@@ -14,45 +14,45 @@ body {
   text-align: center;
 }
 
-/* Contenedor negro centrado */
+/* Frame negro: más estrecho y alto */
 .container {
   position: absolute;
-  width: 80%;
-  height: 200px;           /* Altura del área negra */
-  background: rgba(0,0,0,0.5);
+  width: 400px;         /* Menos ancho */
+  height: 300px;        /* Mayor altura */
+  background: rgba(0, 0, 0, 0.5);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  overflow: hidden;        /* Limita el contenido interno */
+  overflow: hidden;
   padding: 20px;
 }
 
-/* Contenedor específico para la animación del GIF */
+/* Contenedor para el GIF */
 .gif-wrapper {
   position: absolute;
-  bottom: 10px;            /* Alineado a la parte inferior */
+  bottom: 10px;         /* Ubicado en la parte inferior */
   left: 0;
   width: 100%;
-  height: 80px;            /* Ajusta la altura según el GIF */
-  overflow: hidden;        /* Evita que el GIF se salga del área */
+  height: 150px;        /* Altura asignada para acomodar el GIF más grande */
+  overflow: hidden;
 }
 
 /* Estilos y animación para el GIF */
 .gif {
-  width: 80px;             /* Ajusta al tamaño de tu GIF */
+  width: 150px;         /* GIF más grande */
   position: absolute;
   bottom: 0;
-  left: -80px;             /* Inicia justo fuera del contenedor por la izquierda */
+  left: -150px;         /* Comienza fuera del área por la izquierda */
   animation: slide 10s linear forwards;
 }
 
-/* Animación de desplazamiento del GIF */
+/* Animación que mueve el GIF de izquierda a derecha */
 @keyframes slide {
   0% {
-    left: -80px;
+    left: -150px;
   }
   100% {
-    left: calc(100% - 80px); /* Finaliza en el borde derecho dentro del contenedor */
+    left: calc(100% - 150px);  /* Se detiene justo al borde derecho dentro del contenedor */
   }
 }
