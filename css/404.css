@@ -9,13 +9,10 @@ body {
 }
 
 .container {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro para mejorar la legibilidad */
-    padding: 20px;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .loader {
