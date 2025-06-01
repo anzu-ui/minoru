@@ -1,55 +1,58 @@
-/* Estilos básicos para el fondo de la página */
+/* Reset de caja para mayor consistencia */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilos básicos del cuerpo */
 body {
-    margin: 0;
-    padding: 0;
-    background: url('../img/404.png') no-repeat center center fixed;
-    background-size: cover;
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  background: url('../img/404.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
 }
 
 /* Contenedor negro centrado */
 .container {
-    position: absolute;
-    width: 80%;
-    height: 200px; /* Altura del frame negro */
-    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    border-radius: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden; /* Evita que elementos salgan del frame */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  width: 80%;
+  height: 200px;           /* Altura del área negra */
+  background: rgba(0,0,0,0.5);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  overflow: hidden;        /* Limita el contenido interno */
+  padding: 20px;
 }
 
-/* Contenedor para el GIF */
+/* Contenedor específico para la animación del GIF */
 .gif-wrapper {
-    position: absolute;
-    bottom: 10px; /* Coloca el GIF en la parte inferior del frame */
-    left: 0;
-    width: 100%;
-    overflow: hidden; /* Evita que el GIF se desborde */
+  position: absolute;
+  bottom: 10px;            /* Alineado a la parte inferior */
+  left: 0;
+  width: 100%;
+  height: 80px;            /* Ajusta la altura según el GIF */
+  overflow: hidden;        /* Evita que el GIF se salga del área */
 }
 
 /* Estilos y animación para el GIF */
 .gif {
-    width: 80px; /* Ajusta el tamaño del GIF */
-    position: absolute;
-    /* Inicia fuera a la izquierda del contenedor */
-    transform: translateX(-100%);
-    animation: move 10s linear forwards;
+  width: 80px;             /* Ajusta al tamaño de tu GIF */
+  position: absolute;
+  bottom: 0;
+  left: -80px;             /* Inicia justo fuera del contenedor por la izquierda */
+  animation: slide 10s linear forwards;
 }
 
-/* Animación: mueve el GIF de izquierda a derecha */
-@keyframes move {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
+/* Animación de desplazamiento del GIF */
+@keyframes slide {
+  0% {
+    left: -80px;
+  }
+  100% {
+    left: calc(100% - 80px); /* Finaliza en el borde derecho dentro del contenedor */
+  }
 }
