@@ -14,45 +14,80 @@ body {
   text-align: center;
 }
 
-/* Frame negro: más estrecho y alto */
+/* Estilo responsive para el frame negro */
 .container {
   position: absolute;
-  width: 400px;         /* Menos ancho */
-  height: 300px;        /* Mayor altura */
-  background: rgba(0, 0, 0, 0.5);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  
+  /* Usamos un ancho relativo para dispositivos pequeños y un máximo para pantallas grandes */
+  width: 90vw;            /* 90% del viewport en pantallas pequeñas */
+  max-width: 400px;       /* Máximo 400px en pantallas grandes */
+  
+  /* Para el alto, podemos usar un porcentaje del ancho o fijar un valor que mantenga la relación deseada */
+  height: auto;           /* Permite que el alto se ajuste automáticamente */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   overflow: hidden;
-  padding: 20px;
+}
+
+/* Opcional: definir un aspect-ratio (disponible en navegadores modernos) para mantener una proporción constante */
+.container {
+  aspect-ratio: 4 / 3;    /* Por ejemplo, relación 4:3 */
 }
 
 /* Contenedor para el GIF */
 .gif-wrapper {
   position: absolute;
-  bottom: 10px;         /* Ubicado en la parte inferior */
+  bottom: 10px;           /* Ubicado en la parte inferior del contenedor */
   left: 0;
   width: 100%;
-  height: 150px;        /* Altura asignada para acomodar el GIF más grande */
+  /* La altura aquí es opcional; se puede ajustar si quieres que el GIF tenga más espacio */
+  height: auto;
   overflow: hidden;
 }
 
-/* Estilos y animación para el GIF */
+/* Estilos y animación para el GIF (más grande) */
 .gif {
-  width: 150px;         /* GIF más grande */
+  width: 150px;           /* Aumentamos el tamaño del GIF */
   position: absolute;
   bottom: 0;
-  left: -150px;         /* Comienza fuera del área por la izquierda */
+  left: -150px;           /* Inicia a la izquierda fuera del contenedor */
   animation: slide 10s linear forwards;
 }
 
-/* Animación que mueve el GIF de izquierda a derecha */
+/* Animación del GIF de izquierda a derecha */
 @keyframes slide {
   0% {
     left: -150px;
   }
   100% {
-    left: calc(100% - 150px);  /* Se detiene justo al borde derecho dentro del contenedor */
+    left: calc(100% - 150px); /* Se desliza hasta llegar al borde derecho */
+  }
+}
+
+/* Media queries adicionales (opcional) para ajustar detalles en pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+    /* Podrías ajustar también la relación del frame en dispositivos muy pequeños */
+    aspect-ratio: 1 / 1;  /* Por ejemplo, hacerlo cuadrado */
+  }
+  
+  .gif {
+    width: 120px;
+    left: -120px;
+    animation: slide 10s linear forwards;
+  }
+  
+  @keyframes slide {
+    0% {
+      left: -120px;
+    }
+    100% {
+      left: calc(100% - 120px);
+    }
   }
 }
