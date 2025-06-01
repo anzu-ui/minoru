@@ -14,75 +14,65 @@ body {
   text-align: center;
 }
 
-/* Estilo responsive para el frame negro */
+/* Contenedor negro responsive */
 .container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  /* Usamos un ancho relativo para dispositivos pequeños y un máximo para pantallas grandes */
-  width: 90vw;            /* 90% del viewport en pantallas pequeñas */
+  width: 90vw;            /* 90% del viewport en dispositivos pequeños */
   max-width: 400px;       /* Máximo 400px en pantallas grandes */
-  
-  /* Para el alto, podemos usar un porcentaje del ancho o fijar un valor que mantenga la relación deseada */
-  height: auto;           /* Permite que el alto se ajuste automáticamente */
   padding: 20px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   overflow: hidden;
+  aspect-ratio: 4 / 3;     /* Proporción 4:3 para mantener la relación */
 }
 
-/* Opcional: definir un aspect-ratio (disponible en navegadores modernos) para mantener una proporción constante */
-.container {
-  aspect-ratio: 4 / 3;    /* Por ejemplo, relación 4:3 */
-}
-
-/* Contenedor para el GIF */
+/* Contenedor para el GIF: se limita la animación al área deseada */
 .gif-wrapper {
   position: absolute;
-  bottom: 10px;           /* Ubicado en la parte inferior del contenedor */
+  bottom: 10px;           /* Ubicado en la parte inferior */
   left: 0;
   width: 100%;
-  /* La altura aquí es opcional; se puede ajustar si quieres que el GIF tenga más espacio */
-  height: auto;
+  height: 150px;          /* Altura asignada para mostrar el GIF */
   overflow: hidden;
 }
 
-/* Estilos y animación para el GIF (más grande) */
+/* Estilos y animación para el GIF */
 .gif {
-  width: 150px;           /* Aumentamos el tamaño del GIF */
+  width: 150px;           /* GIF de mayor tamaño */
   position: absolute;
   bottom: 0;
-  left: -150px;           /* Inicia a la izquierda fuera del contenedor */
+  left: -150px;           /* Inicia fuera del contenedor, a la izquierda */
   animation: slide 10s linear forwards;
 }
 
-/* Animación del GIF de izquierda a derecha */
+/* Animación que mueve el GIF de izquierda a derecha */
 @keyframes slide {
   0% {
     left: -150px;
   }
   100% {
-    left: calc(100% - 150px); /* Se desliza hasta llegar al borde derecho */
+    left: calc(100% - 150px); /* Finaliza en el borde derecho sin salirse */
   }
 }
 
-/* Media queries adicionales (opcional) para ajustar detalles en pantallas muy pequeñas */
+/* Ajustes opcionales para dispositivos muy pequeños */
 @media (max-width: 480px) {
   .container {
-    padding: 10px;
-    /* Podrías ajustar también la relación del frame en dispositivos muy pequeños */
-    aspect-ratio: 1 / 1;  /* Por ejemplo, hacerlo cuadrado */
+    width: 90vw;
+    max-width: 350px;
+    aspect-ratio: 1 / 1;  /* Se puede modificar la proporción, por ejemplo, hacerlo cuadrado */
   }
   
   .gif {
     width: 120px;
     left: -120px;
-    animation: slide 10s linear forwards;
+    animation: slide-small 10s linear forwards;
   }
   
-  @keyframes slide {
+  @keyframes slide-small {
     0% {
       left: -120px;
     }
