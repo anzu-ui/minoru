@@ -13,18 +13,28 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative; /* Para que el GIF se ajuste dentro del contenedor */
-    width: 80%; /* Ajusta según necesidad */
-    height: 200px; /* Espacio para la animación */
+    position: relative;
+    width: 80%;
+    height: 200px; /* Altura del frame negro */
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.gif-wrapper {
+    position: absolute;
+    bottom: 10px; /* Asegura que esté abajo */
+    left: 0;
+    width: 100%;
+    overflow: hidden; /* Evita que salga del contenedor */
 }
 
 .gif {
     width: 80px; /* Ajusta el tamaño */
-    position: absolute;
     animation: move 3s linear forwards;
 }
 
 @keyframes move {
-    0% { left: 0; }
-    100% { left: 100%; } /* Mueve el GIF de izquierda a derecha */
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100%); } /* Mueve dentro del contenedor negro */
 }
