@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../img/404.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro para mejorar la legibilidad */
+    padding: 20px;
+    border-radius: 10px;
+}
