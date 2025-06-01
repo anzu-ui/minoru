@@ -1,47 +1,55 @@
+/* Estilos básicos para el fondo de la página */
 body {
     margin: 0;
     padding: 0;
     background: url('../img/404.png') no-repeat center center fixed;
     background-size: cover;
+    font-family: Arial, sans-serif;
     color: white;
     text-align: center;
-    font-family: Arial, sans-serif;
 }
 
+/* Contenedor negro centrado */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     width: 80%;
     height: 200px; /* Altura del frame negro */
-    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
-    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
     border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    overflow: hidden; /* Evita que el GIF salga del frame */
+    overflow: hidden; /* Evita que elementos salgan del frame */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Contenedor para el GIF */
 .gif-wrapper {
     position: absolute;
-    bottom: 10px; /* Mantiene el GIF en la parte inferior del contenedor */
+    bottom: 10px; /* Coloca el GIF en la parte inferior del frame */
     left: 0;
     width: 100%;
-    overflow: hidden; /* Evita que el GIF salga del área negra */
+    overflow: hidden; /* Evita que el GIF se desborde */
 }
 
+/* Estilos y animación para el GIF */
 .gif {
-    width: 80px; /* Ajusta el tamaño */
+    width: 80px; /* Ajusta el tamaño del GIF */
     position: absolute;
-    left: -80px; /* Inicia fuera de la izquierda */
-    animation: move 10s linear forwards; /* Se mueve dentro del frame */
-    display: block; /* Asegura que no esté oculto */
+    /* Inicia fuera a la izquierda del contenedor */
+    transform: translateX(-100%);
+    animation: move 10s linear forwards;
 }
 
+/* Animación: mueve el GIF de izquierda a derecha */
 @keyframes move {
-    0% { left: -80px; } /* Empieza fuera del contenedor */
-    100% { left: calc(100% - 80px); } /* Se mueve completamente dentro del frame */
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
