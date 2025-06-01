@@ -33,11 +33,12 @@ body {
 }
 
 .gif {
-    width: 80px; /* Ajusta el tamaño */
-    animation: move 3s linear forwards;
+    width: 80px; /* Ajusta el tamaño según lo necesites */
+    position: absolute;
+    animation: move 10s linear forwards;
 }
 
 @keyframes move {
     0% { transform: translateX(0); }
-    100% { transform: translateX(100%); } /* Mueve dentro del contenedor negro */
+    100% { transform: translateX(100%); } /* Mueve el GIF dentro del contenedor negro */
 }
