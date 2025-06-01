@@ -34,6 +34,14 @@ body {
 }
 
 .gif {
-    width: 80px; /* Ajusta el tamaño */
+    width: 80px; /* Tamaño del GIF */
     position: absolute;
-    left: -80px; /* Posiciona el
+    bottom: 10px; /* Lo mantiene en la parte inferior del contenedor */
+    left: 0; /* Inicia dentro del frame */
+    animation: move 10s linear forwards;
+}
+
+@keyframes move {
+    0% { left: 0; } /* Empieza en el borde izquierdo del frame */
+    100% { left: calc(100% - 80px); } /* Se mueve hasta el borde derecho sin salir */
+}
