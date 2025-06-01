@@ -27,17 +27,13 @@ body {
 
 .gif-wrapper {
     position: absolute;
-    bottom: 10px; /* Mantiene el GIF en la parte inferior del frame negro */
+    bottom: 10px; /* Mantiene el GIF abajo */
     left: 0;
     width: 100%;
+    overflow: hidden; /* Evita que el GIF se salga del contenedor */
 }
 
 .gif {
     width: 80px; /* Ajusta el tamaño */
-    position: relative; /* Se mueve dentro del .gif-wrapper */
-    animation: move 10s linear forwards;
-}
-
-@keyframes move {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(100% - 80px)); } /* Ajusta la distancia según el tamaño
+    position: absolute;
+    left: -80px; /* Posiciona el
