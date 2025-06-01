@@ -27,21 +27,21 @@ body {
 
 .gif-wrapper {
     position: absolute;
-    bottom: 10px; /* Mantiene el GIF abajo */
+    bottom: 10px; /* Mantiene el GIF en la parte inferior del contenedor */
     left: 0;
     width: 100%;
-    overflow: hidden; /* Evita que el GIF se salga del contenedor */
+    overflow: hidden; /* Evita que el GIF salga del área negra */
 }
 
 .gif {
-    width: 80px; /* Tamaño del GIF */
+    width: 80px; /* Ajusta el tamaño */
     position: absolute;
-    bottom: 10px; /* Lo mantiene en la parte inferior del contenedor */
-    left: 0; /* Inicia dentro del frame */
-    animation: move 10s linear forwards;
+    left: -80px; /* Inicia fuera de la izquierda */
+    animation: move 10s linear forwards; /* Se mueve dentro del frame */
+    display: block; /* Asegura que no esté oculto */
 }
 
 @keyframes move {
-    0% { left: 0; } /* Empieza en el borde izquierdo del frame */
-    100% { left: calc(100% - 80px); } /* Se mueve hasta el borde derecho sin salir */
+    0% { left: -80px; } /* Empieza fuera del contenedor */
+    100% { left: calc(100% - 80px); } /* Se mueve completamente dentro del frame */
 }
