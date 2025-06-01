@@ -15,30 +15,29 @@ body {
     justify-content: center;
     position: absolute;
     width: 80%;
-    height: 200px;
-    background: rgba(0, 0, 0, 0.5);
+    height: 200px; /* Altura del frame negro */
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
     padding: 20px;
     border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow: hidden; /* Evita que el GIF salga del frame */
 }
 
 .gif-wrapper {
     position: absolute;
-    bottom: 10px; /* Asegura que esté abajo */
+    bottom: 10px; /* Mantiene el GIF en la parte inferior del frame negro */
     left: 0;
     width: 100%;
-    overflow: hidden; /* Evita que salga del contenedor */
 }
 
 .gif {
-    width: 80px; /* Ajusta el tamaño según lo necesites */
-    position: absolute;
+    width: 80px; /* Ajusta el tamaño */
+    position: relative; /* Se mueve dentro del .gif-wrapper */
     animation: move 10s linear forwards;
 }
 
 @keyframes move {
     0% { transform: translateX(0); }
-    100% { transform: translateX(100%); } /* Mueve el GIF dentro del contenedor negro */
-}
+    100% { transform: translateX(calc(100% - 80px)); } /* Ajusta la distancia según el tamaño
