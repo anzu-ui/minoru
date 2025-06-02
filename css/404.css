@@ -1,15 +1,14 @@
 /* css/404.css */
 
-/* Variables globales para los colores de los frames */
-/* Variables globales para los colores de los frames */
+/* --- Variables globales --- */
 :root {
   --container-bg: rgba(0, 0, 0, 0.5);
-  --header-bg: #87CEFA;
-  --gif-bg: #F08080;
-  --letters-bg: #F0E68C;
+  --header-bg: rgba(0, 0, 0, 0.0);
+  --gif-bg: rgba(0, 0, 0, 0.0);
+  --letters-bg: rgba(0, 0, 0, 0.0);
 }
 
-/* Reset básico */
+/* --- Reset básico --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,7 +18,7 @@
 body {
   margin: 0;
   padding: 0;
-  /* Fondo con imagen fijada; verifica que la ruta sea correcta en tu entorno */
+  /* Fondo con imagen (ajusta la ruta si es necesario) */
   background: url('../img/404.png') no-repeat center center fixed;
   background-size: cover;
   font-family: Arial, sans-serif;
@@ -27,62 +26,80 @@ body {
   color: white;
 }
 
-/* Contenedor principal adaptativo y más chato */
+/* --- Contenedor principal --- */
 .container {
   width: clamp(320px, 90vw, 500px);
-  aspect-ratio: 10 / 3;  /* Más "chato" en altura */
-  margin: 500px auto;
+  aspect-ratio: 10 / 3;
+  margin: 400px auto;
   background: var(--container-bg);
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 0;
   display: flex;
-  flex-direction: column; /* Primero el header, luego la zona de contenido */
+  flex-direction: column;
   gap: 10px;
 }
 
-/* Header con el título */
+/* --- Header --- */
 .header-frame {
-  flex: 0 0 auto;
+  display: inline-block;
   background-color: var(--header-bg);
-}
-.header-frame h1 {
-  margin: 0;
-  font-size: 1.5em;
+  padding: 5px 10px;
+  margin: 0 auto;
+  border-radius: 5px;
 }
 
-/* Zona de contenido en forma de fila */
+.big-title {
+  font-size: 2em;      /* Ajusta el tamaño acá */
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* --- Zona de contenido ---
+     Se invierte el orden de los frames con flex-direction: row-reverse,
+     por lo que el GIF se mostrará a la derecha y las letras a la izquierda. */
 .content {
   flex: 1;
   display: flex;
-  flex-direction: row;    /* Los dos bloques (GIF y letras) en la misma línea */
-  gap: 10px;
-  align-items: stretch;    /* Estira ambas columnas para ocupar toda la altura asignada */
-  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-/* Columna para el GIF */
+/* --- Columna para el GIF --- */
 .gif-column {
   flex: 0 0 25%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  position: relative;      /* Para posicionar el GIF de forma absoluta dentro */
+  position: relative;
   background-color: var(--gif-bg);
 }
 
-/* Estilos para el GIF: animado para moverse dentro de su contenedor */
+/* Contenedor .mirror para aplicar el efecto espejo y ocupar toda la altura */
+.mirror {
+  width: 100%;
+  height: 100%;       /* Hace que ocupe toda la altura de la columna */
+  position: relative; /* Ahora, el GIF se posicionará de forma absoluta respecto a este contenedor */
+  transform: scaleX(-1);
+}
+
+/* El GIF se posiciona absolutamente en el contenedor .mirror y se anima */
 .gif {
   width: 100%;
   position: absolute;
-  left: -99px;             /* Inicialmente, solo se ve 1px de su borde derecho */
-  bottom: 0;               /* Importante: hace que el GIF se alinee al fondo del contenedor */
-  animation: slide 10s linear infinite;
+  left: 0;
+  bottom: 0;
+  animation: slideReverse 5s linear forwards;
 }
 
-@keyframes slide {
-  0% { left: -99px; }
-  100% { left: calc(100% - 1px); }
+@keyframes slideReverse {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(120%);
+  }
 }
 
 @media (max-width: 480px) {
@@ -90,17 +107,21 @@ body {
     width: 90vw;
     max-width: 350px;
   }
-  .header-frame h1 {
+  .big-title {
     font-size: 1.2em;
   }
   .gif {
     width: 80px;
-    left: -79px;
-    bottom: 0; /* También para la versión responsive */
-    animation: slideSmall 10s linear infinite;
+    left: 0;
+    bottom: 0;
+    animation: slideSmall 5s linear forwards;
   }
   @keyframes slideSmall {
-    0% { left: -79px; }
-    100% { left: calc(100% - 1px); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(120%);
+    }
   }
 }

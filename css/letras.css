@@ -1,32 +1,32 @@
 /* css/letras.css */
 
-/* Columna para las letras: ocupa aproximadamente el 75% del ancho del content y se estira */
+/* --- Columna para las letras --- */
 .letters-column {
-  flex: 0 0 60%;
+  flex: 0 0 75%;
   display: flex;
-  align-items: flex-end;  /* Alinea los elementos hacia abajo */
+  align-items: flex-end;      /* Alinea el contenido al fondo */
   justify-content: center;
   background-color: var(--letters-bg);
   height: 100%;
   overflow: hidden;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-/* Contenedor de los cuadrados: se disponen en fila con un gap fijo */
+/* Contenedor para los cuadrados (letras) */
 .square-container {
   display: flex;
-  gap: 2px;  /* Gap reducido para que los cuadrados queden muy juntos */
+  gap: 7px;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: flex-end;  /* Alinea los cuadrados al fondo del contenedor */
+  align-items: flex-end;      /* Pega los cuadrados al fondo */
   width: 100%;
 }
 
-/* Estilo para cada cuadrado de letra:
-   Se usa "calc((100% - 10px) / 6)" porque tenemos 6 cuadrados con 5 gaps de 2px (total 10px),
-   y se utiliza aspect-ratio: 1 para mantenerlos cuadrados.
-   Se aumenta el font-size a 2em para que las letras se vean más grandes. */
+/* Cada cuadrado de letra */
 .square {
-  width: calc((100% - 10px) / 6);
+  width: calc((100% - 10px) / 6);  /* Distribuye el ancho entre 6 cuadrados */
   aspect-ratio: 1;
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@
   font-weight: bold;
   font-family: sans-serif;
   color: white;
-  border: 1px solid white;
+  border: 1px solid black;  /* Borde negro */
   border-radius: 5px;
   background-image: repeating-linear-gradient(
     45deg,
@@ -51,4 +51,15 @@
               -1px 1px 0 black,
                1px 1px 0 black;
   cursor: pointer;
+}
+
+/* Animación rotate para los cuadrados */
+.rotate {
+  animation: rotateBack 0.8s ease-out forwards;
+}
+
+@keyframes rotateBack {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(0deg); }
 }

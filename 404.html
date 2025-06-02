@@ -1,35 +1,36 @@
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagina no encontrada</title>
-  <!-- Estilos del contenedor general y del GIF -->
+  <title>Página no encontrada</title>
+  <!-- Se incluyen los estilos generales y de las letras -->
   <link rel="stylesheet" href="css/404.css">
-  <!-- Estilos para los cuadrados (letras) -->
   <link rel="stylesheet" href="css/letras.css">
 </head>
 <body>
   <div class="container">
-    <!-- Header (mensaje del comienzo) -->
+    <!-- Header con el mensaje usando div.big-title -->
     <div class="header-frame">
-      <h1>Pagina no encontrada!</h1>
+      <div class="big-title">Página no encontrada</div>
     </div>
-    <!-- Zona de contenido -->
+    <!-- Zona de contenido: se invierte el orden, con el GIF a la derecha y las letras a la izquierda -->
     <div class="content">
-      <!-- Columna para el GIF (25% del ancho del content) -->
+      <!-- Columna del GIF -->
       <div class="gif-column">
-        <img src="img/bolitaDeNieve2.gif" alt="Cargando..." class="gif">
+        <!-- Contenedor .mirror para aplicar el efecto espejo -->
+        <div class="mirror">
+          <img src="img/bolitaDeNieve2.gif" alt="Cargando..." class="gif">
+        </div>
       </div>
-      <!-- Columna para las letras (75% del ancho del content) -->
+      <!-- Columna de las letras -->
       <div class="letters-column">
         <div class="square-container">
-          <!-- Los cuadrados serán generados dinámicamente por JS -->
+          <!-- Los cuadrados se generan de forma dinámica -->
         </div>
       </div>
     </div>
   </div>
-  <!-- Se carga el script que genera las letras y programa el efecto pop -->
   <script src="js/generarLetras.js"></script>
 </body>
 </html>
