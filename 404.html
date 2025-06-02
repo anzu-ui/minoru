@@ -12,18 +12,18 @@
   <div class="container">
     <!-- Header con el mensaje usando div.big-title -->
     <div class="header-frame">
-      <div class="big-title">Página no encontrada</div>
+      <div class="big-title">Pagina no encontrada</div>
     </div>
-    <!-- Zona de contenido: se invierte el orden, con el GIF a la derecha y las letras a la izquierda -->
+    <!-- Zona de contenido: se usa flex-direction: row-reverse para colocar el GIF a la derecha -->
     <div class="content">
-      <!-- Columna del GIF -->
+      <!-- Columna del GIF: tendrá un ancho exacto del 30% del contenedor grande -->
       <div class="gif-column">
         <!-- Contenedor .mirror para aplicar el efecto espejo -->
         <div class="mirror">
           <img src="img/bolitaDeNieve2.gif" alt="Cargando..." class="gif">
         </div>
       </div>
-      <!-- Columna de las letras -->
+      <!-- Columna de las letras: ocupará el 70% del ancho -->
       <div class="letters-column">
         <div class="square-container">
           <!-- Los cuadrados se generan de forma dinámica -->
