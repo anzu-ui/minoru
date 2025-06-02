@@ -1,83 +1,106 @@
+/* css/404.css */
+
+/* Variables globales para los colores de los frames */
+/* Variables globales para los colores de los frames */
+:root {
+  --container-bg: rgba(0, 0, 0, 0.5);
+  --header-bg: #87CEFA;
+  --gif-bg: #F08080;
+  --letters-bg: #F0E68C;
+}
+
 /* Reset básico */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Fondo de la página */
 body {
   margin: 0;
   padding: 0;
+  /* Fondo con imagen fijada; verifica que la ruta sea correcta en tu entorno */
   background: url('../img/404.png') no-repeat center center fixed;
   background-size: cover;
   font-family: Arial, sans-serif;
-  color: white;
   text-align: center;
+  color: white;
 }
 
-/* Contenedor negro responsive */
+/* Contenedor principal adaptativo y más chato */
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;            /* 90% del viewport en dispositivos pequeños */
-  max-width: 400px;       /* Máximo 400px en pantallas grandes */
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.5);
+  width: clamp(320px, 90vw, 500px);
+  aspect-ratio: 10 / 3;  /* Más "chato" en altura */
+  margin: 500px auto;
+  background: var(--container-bg);
   border-radius: 10px;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;     /* Proporción 4:3 para mantener la relación */
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* Primero el header, luego la zona de contenido */
+  gap: 10px;
 }
 
-/* Contenedor para el GIF: se limita la animación al área deseada */
-.gif-wrapper {
-  position: absolute;
-  bottom: 10px;           /* Ubicado en la parte inferior */
-  left: 0;
-  width: 100%;
-  height: 150px;          /* Altura asignada para mostrar el GIF */
-  overflow: hidden;
+/* Header con el título */
+.header-frame {
+  flex: 0 0 auto;
+  background-color: var(--header-bg);
+}
+.header-frame h1 {
+  margin: 0;
+  font-size: 1.5em;
 }
 
-/* Estilos y animación para el GIF */
+/* Zona de contenido en forma de fila */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;    /* Los dos bloques (GIF y letras) en la misma línea */
+  gap: 10px;
+  align-items: stretch;    /* Estira ambas columnas para ocupar toda la altura asignada */
+  justify-content: center;
+}
+
+/* Columna para el GIF */
+.gif-column {
+  flex: 0 0 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;      /* Para posicionar el GIF de forma absoluta dentro */
+  background-color: var(--gif-bg);
+}
+
+/* Estilos para el GIF: animado para moverse dentro de su contenedor */
 .gif {
-  width: 150px;           /* GIF de mayor tamaño */
+  width: 100%;
   position: absolute;
-  bottom: 0;
-  left: -150px;           /* Inicia fuera del contenedor, a la izquierda */
-  animation: slide 10s linear forwards;
+  left: -99px;             /* Inicialmente, solo se ve 1px de su borde derecho */
+  bottom: 0;               /* Importante: hace que el GIF se alinee al fondo del contenedor */
+  animation: slide 10s linear infinite;
 }
 
-/* Animación que mueve el GIF de izquierda a derecha */
 @keyframes slide {
-  0% {
-    left: -150px;
-  }
-  100% {
-    left: calc(100% - 150px); /* Finaliza en el borde derecho sin salirse */
-  }
+  0% { left: -99px; }
+  100% { left: calc(100% - 1px); }
 }
 
-/* Ajustes opcionales para dispositivos muy pequeños */
 @media (max-width: 480px) {
   .container {
     width: 90vw;
     max-width: 350px;
-    aspect-ratio: 1 / 1;  /* Se puede modificar la proporción, por ejemplo, hacerlo cuadrado */
   }
-  
+  .header-frame h1 {
+    font-size: 1.2em;
+  }
   .gif {
-    width: 120px;
-    left: -120px;
-    animation: slide-small 10s linear forwards;
+    width: 80px;
+    left: -79px;
+    bottom: 0; /* También para la versión responsive */
+    animation: slideSmall 10s linear infinite;
   }
-  
-  @keyframes slide-small {
-    0% {
-      left: -120px;
-    }
-    100% {
-      left: calc(100% - 120px);
-    }
+  @keyframes slideSmall {
+    0% { left: -79px; }
+    100% { left: calc(100% - 1px); }
   }
 }

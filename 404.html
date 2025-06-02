@@ -1,27 +1,35 @@
-<!DOCTYPE html>
+}<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página no encontrada</title>
+  <title>Pagina no encontrada</title>
+  <!-- Estilos del contenedor general y del GIF -->
   <link rel="stylesheet" href="css/404.css">
-  <script>
-    // Redirige a la página principal después de 10 segundos (comentado para evitar la redirección)
-    /*
-    setTimeout(function(){
-      window.location.href = "/";
-    }, 10000);
-    */
-  </script>
+  <!-- Estilos para los cuadrados (letras) -->
+  <link rel="stylesheet" href="css/letras.css">
 </head>
 <body>
   <div class="container">
-    <h1>Página no encontrada</h1>
-    <p>Sitio en construcción</p>
-    <!-- Contenedor para la animación del GIF -->
-    <div class="gif-wrapper">
-      <img src="img/bolitaDeNieve2.gif" alt="Cargando..." class="gif">
+    <!-- Header (mensaje del comienzo) -->
+    <div class="header-frame">
+      <h1>Pagina no encontrada!</h1>
+    </div>
+    <!-- Zona de contenido -->
+    <div class="content">
+      <!-- Columna para el GIF (25% del ancho del content) -->
+      <div class="gif-column">
+        <img src="img/bolitaDeNieve2.gif" alt="Cargando..." class="gif">
+      </div>
+      <!-- Columna para las letras (75% del ancho del content) -->
+      <div class="letters-column">
+        <div class="square-container">
+          <!-- Los cuadrados serán generados dinámicamente por JS -->
+        </div>
+      </div>
     </div>
   </div>
+  <!-- Se carga el script que genera las letras y programa el efecto pop -->
+  <script src="js/generarLetras.js"></script>
 </body>
 </html>

@@ -1,0 +1,54 @@
+/* css/letras.css */
+
+/* Columna para las letras: ocupa aproximadamente el 75% del ancho del content y se estira */
+.letters-column {
+  flex: 0 0 60%;
+  display: flex;
+  align-items: flex-end;  /* Alinea los elementos hacia abajo */
+  justify-content: center;
+  background-color: var(--letters-bg);
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Contenedor de los cuadrados: se disponen en fila con un gap fijo */
+.square-container {
+  display: flex;
+  gap: 2px;  /* Gap reducido para que los cuadrados queden muy juntos */
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-end;  /* Alinea los cuadrados al fondo del contenedor */
+  width: 100%;
+}
+
+/* Estilo para cada cuadrado de letra:
+   Se usa "calc((100% - 10px) / 6)" porque tenemos 6 cuadrados con 5 gaps de 2px (total 10px),
+   y se utiliza aspect-ratio: 1 para mantenerlos cuadrados.
+   Se aumenta el font-size a 2em para que las letras se vean más grandes. */
+.square {
+  width: calc((100% - 10px) / 6);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+  background-blend-mode: overlay;
+  -webkit-text-stroke: 1px black;
+  text-shadow: -1px -1px 0 black,
+               1px -1px 0 black,
+              -1px 1px 0 black,
+               1px 1px 0 black;
+  cursor: pointer;
+}
