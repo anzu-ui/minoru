@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuadrados Redondeados</title>
+  <style>
+    /* Estilos generales para centrar el contenido */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #333;
+    }
+
+    /* Contenedor para organizar los cuadrados en fila */
+    .square-container {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Estilo para cada cuadrado */
+    .square {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      font-family: sans-serif;
+      color: white;
+      border: 5px solid white; /* Borde blanco */
+      border-radius: 20px;     /* Bordes redondeados */
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="square-container">
+    <!-- Cada cuadrado se define con un fondo distinto y una letra adentro -->
+    <div class="square" style="background-color: #ff5733;">A</div>
+    <div class="square" style="background-color: #33c1ff;">r</div>
+    <div class="square" style="background-color: #34eb6b;">e</div>
+    <div class="square" style="background-color: #f1c40f;">d</div>
+    <div class="square" style="background-color: #9b59b6;">t</div>
+  </div>
+
+  <script>
+    // Agregamos un evento click a cada cuadrado para mostrar la letra correspondiente
+    document.querySelectorAll('.square').forEach(function(square) {
+      square.addEventListener('click', function() {
+        alert("Haz hecho clic en la letra: " + this.textContent);
+      });
+    });
+  </script>
+</body>
+</html>
