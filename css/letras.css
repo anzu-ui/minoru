@@ -14,7 +14,7 @@
   padding: 0 10px 10px;
 }
 
-/* Contenedor para los cuadrados (letras) */
+/* Contenedor para los cuadrados */
 .square-container {
   display: flex;
   gap: 7px;
@@ -51,15 +51,15 @@
               -1px 1px 0 black,
                1px 1px 0 black;
   cursor: pointer;
+  opacity: 0; /* Inicia oculto */
 }
 
-/* Animación rotate para los cuadrados */
-.rotate {
-  animation: rotateBack 0.8s ease-out forwards;
+/* Clase para el efecto fade */
+.fade {
+  animation: fadeIn 1s ease-out forwards;
 }
 
-@keyframes rotateBack {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
-  100% { transform: rotate(0deg); }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

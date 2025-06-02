@@ -14,7 +14,7 @@
   margin: 0;
   padding: 0;
 }
-  
+
 body {
   margin: 0;
   padding: 0;
@@ -26,7 +26,7 @@ body {
 }
 
 /* --- Contenedor principal ---
-     Se fija una altura (300px) en lugar de usar aspect-ratio */
+     Se fija una altura (300px) y se mantiene la estructura flex original */
 .container {
   width: clamp(320px, 90vw, 600px);
   height: 300px;
@@ -39,13 +39,15 @@ body {
   gap: 10px;
 }
 
-/* --- Header --- */
+/* --- Header ---
+     Se mantiene la posición en el flujo y se desplaza solo visualmente 40px hacia abajo */
 .header-frame {
   display: inline-block;
   background-color: var(--header-bg);
   padding: 5px 10px;
-  margin: 0 auto;
   border-radius: 5px;
+  /* Desplaza visualmente 40px hacia abajo sin afectar el flujo */
+  transform: translateY(40px);
 }
 
 .big-title {
@@ -69,7 +71,7 @@ body {
      Se fija un ancho exacto del 30% del contenedor grande y una altura del 78% */
 .gif-column {
   width: 30%;
-  height: 78%;
+  height: 60%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -90,7 +92,7 @@ body {
 
 /* El GIF se adapta a la altura del contenedor .mirror.
    Se usa left: 0 para que su borde izquierdo (después de invertir) esté alineado con el contenedor.
-   La animación desplaza la imagen hacia la izquierda (valores negativos en translateX). */
+   La animación desplaza la imagen hacia la izquierda (con translateX negativo). */
 .gif {
   height: 100%;
   width: auto;
